@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/maxxcard/arbi/internal/core/command"
+	"github.com/andresmeireles/go-template/internal/core/command"
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
 )
