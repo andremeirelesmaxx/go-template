@@ -1,11 +1,23 @@
 services:
   go:
     build: ./docker/go
-    container_name: arbi-golang
+    container_name: go-teplate-golang
     working_dir: /app
     volumes:
       - './:/app'
-    environment:
-      - APP_PORT=${APP_PORT}
+    # environment: # uncomment to add OS environment to load with container
+      # - APP_PORT=
+      # - APP_IS_LOCAL=
     ports:
       - ${APP_PORT}:${APP_PORT}
+  
+  database:
+    image: mysql:8.4.3
+    working_dir: /app
+    volumes:
+      - '.:/app'
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+    ports:
+      - "${DB_PORT}:3306" 

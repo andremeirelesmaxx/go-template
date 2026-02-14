@@ -7,9 +7,11 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/andremeirelesmaxx/go-template/internal/core/database"
+	"github.com/andremeirelesmaxx/go-template/internal/core/env"
+	"github.com/andremeirelesmaxx/go-template/internal/core/server"
+	"github.com/andremeirelesmaxx/go-template/internal/feature/echo"
 	"github.com/go-chi/chi/v5"
-	"github.com/andresmeireles/go-template/internal/core/server"
-	"github.com/andresmeireles/go-template/internal/feature/echo"
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
 	"go.uber.org/zap"
@@ -21,6 +23,8 @@ func main() {
 			return &fxevent.ZapLogger{Logger: log}
 		}),
 		fx.Provide(
+			env.NewEnv,
+			database.NewConn,
 			NewHttpServer,
 			zap.NewExample,
 			fx.Annotate(

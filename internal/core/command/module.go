@@ -1,21 +1,22 @@
 package command
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
+	"go.uber.org/fx"
 )
 
-func NewModule() *cobra.Command {
-	a := &cobra.Command{
-		Use: "boules",
-		Run: func(c *cobra.Command, args []string) {
-			fmt.Println("boules")
-		},
+func NewModule(commands []*cobra.Command) *cobra.Command {
+	rootCmd := &cobra.Command{}
+	for _, c := range commands {
+		rootCmd.AddCommand(c)
 	}
 
-	rootCmd := &cobra.Command{}
-	rootCmd.AddCommand(a)
-
 	return rootCmd
+}
+
+func AsCommand(c any) any {
+	return fx.Annotate(
+		c,
+		fx.ResultTags(`group:"commands"`),
+	)
 }
