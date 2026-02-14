@@ -1,0 +1,12 @@
+# air.toml
+root = "."
+tmp_dir = "tmp"
+
+[build]
+bin = "tmp/app"
+cmd = "CGO_ENABLED=0 go build -gcflags=all='-N -l' -o ./tmp/app ./cmd/api"
+exclude_dir = ["tmp"]
+exclude_regex = ["_test\\.go"]
+
+[log]
+time = true

@@ -1,0 +1,11 @@
+services:
+  go:
+    build: ./docker/go
+    container_name: arbi-golang
+    working_dir: /app
+    volumes:
+      - './:/app'
+    environment:
+      - APP_PORT=${APP_PORT}
+    ports:
+      - ${APP_PORT}:${APP_PORT}
