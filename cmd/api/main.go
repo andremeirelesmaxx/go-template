@@ -8,8 +8,8 @@ import (
 	"os"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/maxxcard/arbi/internal/core/server"
-	"github.com/maxxcard/arbi/internal/feature/echo"
+	"github.com/andresmeireles/go-template/internal/core/server"
+	"github.com/andresmeireles/go-template/internal/feature/echo"
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
 	"go.uber.org/zap"
