@@ -11,6 +11,7 @@ import (
 	"github.com/andremeirelesmaxx/go-template/internal/core/env"
 	"github.com/andremeirelesmaxx/go-template/internal/core/server"
 	"github.com/andremeirelesmaxx/go-template/internal/feature/echo"
+	"github.com/andremeirelesmaxx/go-template/internal/repositories"
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
@@ -25,6 +26,8 @@ func main() {
 		fx.Provide(
 			env.NewEnv,
 			database.NewConn,
+			database.NewRepository,
+			repositories.NewExample,
 			NewHttpServer,
 			zap.NewExample,
 			fx.Annotate(

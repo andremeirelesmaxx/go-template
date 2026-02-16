@@ -6,6 +6,7 @@ import (
 	"github.com/andremeirelesmaxx/go-template/internal/core/command"
 	"github.com/andremeirelesmaxx/go-template/internal/core/database"
 	"github.com/andremeirelesmaxx/go-template/internal/core/env"
+	"github.com/andremeirelesmaxx/go-template/internal/repositories"
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
 )
@@ -15,7 +16,9 @@ func main() {
 		fx.Provide(
 			env.NewEnv,
 			database.NewConn,
+			database.NewRepository,
 			database.NewMigrate,
+			repositories.NewExample,
 			command.AsCommand(command.NewAppModeCommand),
 			command.AsCommand(command.NewAppRootPathCommand),
 			command.AsCommand(command.NewMigrationUp),
